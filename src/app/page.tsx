@@ -13,6 +13,14 @@ export default function Home() {
           height={38}
           priority
         />
+        <Image
+          style={{filter: ""}}
+          src="/padoru.gif"
+          alt="Next.js logo"
+          width={180}
+          height={180}
+          unoptimized
+        />
         <ol>
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
