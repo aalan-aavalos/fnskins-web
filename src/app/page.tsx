@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+        <h1>Hola soy alan el dueño de este dominio</h1>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -14,7 +15,7 @@ export default function Home() {
           priority
         />
         <Image
-          style={{filter: ""}}
+          style={{ filter: "" }}
           src="/padoru.gif"
           alt="Next.js logo"
           width={180}
