@@ -6,6 +6,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>Hola soy alan el dueño de este dominio</h1>
+        <h2>prueba 2 ssl</h2>
         <Image
           className={styles.logo}
           src="/next.svg"
