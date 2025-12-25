@@ -1,105 +1,52 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import { apiLogin } from "@/lib/api";
+import { ChangeEvent, FormEvent } from "react";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <h1>Hola soy alan el dueño de este dominio</h1>
-        <h2>prueba 2 ssl</h2>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <Image
-          style={{ filter: "" }}
-          src="/padoru.gif"
-          alt="Next.js logo"
-          width={180}
-          height={180}
-          unoptimized
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  // const handleChange = (
+  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ): void => {
+  //   const { name, value } = e.target;
+  //   setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  // };
+
+  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const { email, password } = {
+      email: String(formData.get("email") || ""),
+      password: String(formData.get("password") || ""),
+    };
+
+
+
+
+    const res = await apiLogin(email, password);
+
+    console.log(res);
+  }
+
+  return (
+    <div >
+      <h1>Bienvenido a la pagina de inicio de Sesión</h1>
+      <p>Por favor, inicia sesión para continuar.</p>
+
+      <form
+        onSubmit={handleLogin}
+      >
+        <label>
+          Email
+          <input name="email" type="email" />
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" />
+        </label>
+        <button>Sign In</button>
+      </form>
     </div>
   );
 }
