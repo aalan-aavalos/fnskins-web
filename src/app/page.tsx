@@ -1,7 +1,7 @@
 "use client"
 
 import { apiLogin } from "@/lib/api";
-import { ChangeEvent, FormEvent } from "react";
+import { /* ChangeEvent, */ FormEvent } from "react";
 
 export default function Home() {
 
@@ -20,9 +20,6 @@ export default function Home() {
       email: String(formData.get("email") || ""),
       password: String(formData.get("password") || ""),
     };
-
-
-
 
     const res = await apiLogin(email, password);
 
